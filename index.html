@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yolanda · VIP Portal · September</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#262133;
+  --ink-soft:#3a3450;
+  --paper:#FAF5EC;
+  --card:#FFFDF8;
+  --gold:#B4914E;
+  --gold-deep:#8f7038;
+  --gold-wash:#f3ead7;
+  --rose:#E8D5C9;
+  --rose-deep:#c9a893;
+  --euca:#5C6F62;
+  --euca-wash:#e7ece7;
+  --line:#e6ddcd;
+  --body:#4a4457;
+  --muted:#8a8296;
+  --disp:"Fraunces",Georgia,serif;
+  --ui:"Karla",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overscroll-behavior-y:none}
+body{
+  overscroll-behavior-y:none;
+  touch-action:manipulation;
+  font-family:var(--ui);
+  background:var(--paper);
+  color:var(--body);
+  font-size:16.5px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+
+/* ---------- shell ---------- */
+.shell{display:flex;min-height:100vh;max-width:1150px;margin:0 auto;padding:20px 20px 0;gap:26px}
+.side{
+  display:flex;flex-direction:column;
+  width:264px;flex-shrink:0;
+  background:var(--ink);
+  color:#d8d2e2;
+  padding:34px 0 28px;
+  position:sticky;top:20px;height:calc(100vh - 40px);overflow-y:auto;
+  border-radius:16px;
+  box-shadow:0 18px 44px rgba(38,33,51,.16);
+}
+.side::-webkit-scrollbar{width:0}
+.brand{padding:0 28px 22px;border-bottom:1px solid rgba(255,255,255,.08)}
+.brand .star{
+  font-family:var(--disp);font-size:26px;color:var(--gold);line-height:1;
+}
+.brand h1{
+  font-family:var(--disp);font-weight:500;font-size:21px;color:#fff;
+  letter-spacing:.01em;margin-top:10px;
+}
+.brand .vip{
+  display:inline-block;margin-top:9px;
+  font-size:11.5px;letter-spacing:.14em;color:var(--gold);
+  border:1px solid rgba(180,145,78,.55);border-radius:2px;
+  padding:3px 9px;
+}
+.nav{padding:16px 14px;display:flex;flex-direction:column;gap:2px}
+.nav button{
+  display:flex;align-items:center;gap:11px;width:100%;
+  background:none;border:none;color:#b9b1c9;cursor:pointer;
+  font-family:var(--ui);font-size:14.5px;text-align:left;
+  padding:10px 14px;border-radius:6px;line-height:1.35;
+  transition:background .15s,color .15s;
+}
+.nav button .g{font-family:var(--disp);color:var(--gold);font-size:15px;width:16px;flex-shrink:0;text-align:center}
+.nav button:hover{background:rgba(255,255,255,.05);color:#fff}
+.nav button.on{background:rgba(180,145,78,.16);color:#fff}
+.nav button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.nav .tick{margin-left:auto;font-size:12px;color:var(--euca-wash);opacity:0;transition:opacity .2s}
+.nav .tick.done{opacity:.9;color:#9fc2a8}
+.side-foot{margin-top:auto;padding:20px 28px 0;font-size:12.5px;color:#8a8296;border-top:1px solid rgba(255,255,255,.08)}
+.side-foot b{color:#c9c2d8;font-weight:600}
+
+/* mobile tab strip */
+.mbar{display:none}
+@media (max-width:880px){
+  .shell{display:block;max-width:none;padding:0;gap:0}
+  .side{display:none}
+  .mbar{
+    display:block;position:sticky;top:0;z-index:40;
+    background:var(--ink);padding:12px 0 0;
+  }
+  .mbar .mtitle{
+    color:#fff;font-family:var(--disp);font-size:17px;
+    padding:0 18px 10px;display:flex;align-items:baseline;gap:8px;
+  }
+  .mbar .mtitle span{color:var(--gold);font-size:12px;font-family:var(--ui);letter-spacing:.12em}
+  .mdd{position:relative;padding:0 14px 12px}
+  .mdd-btn{
+    width:100%;display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.09);border:1px solid rgba(180,145,78,.45);
+    color:#fff;font-family:var(--ui);font-size:15px;font-weight:600;
+    padding:11px 15px;border-radius:9px;cursor:pointer;text-align:left;
+  }
+  .mdd-btn .mdd-g{font-family:var(--disp);color:var(--gold);font-size:15px}
+  .mdd-btn .mdd-caret{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .2s}
+  .mdd.open .mdd-btn .mdd-caret{transform:rotate(180deg)}
+  .mdd-list{
+    display:none;position:absolute;left:14px;right:14px;top:calc(100% - 4px);z-index:60;
+    background:var(--ink);border:1px solid rgba(180,145,78,.45);border-radius:10px;
+    padding:6px;box-shadow:0 14px 34px rgba(20,15,35,.5);
+    max-height:60vh;overflow-y:auto;
+  }
+  .mdd.open .mdd-list{display:block}
+  .mdd-list button{
+    display:flex;align-items:center;gap:11px;width:100%;
+    background:none;border:none;color:#c5bdd6;cursor:pointer;text-align:left;
+    font-family:var(--ui);font-size:14.5px;padding:11px 12px;border-radius:7px;
+  }
+  .mdd-list button .g{font-family:var(--disp);color:var(--gold);width:16px;text-align:center}
+  .mdd-list button.on{background:rgba(180,145,78,.18);color:#fff;font-weight:600}
+}
+
+/* ---------- main column ---------- */
+.main{flex:1;min-width:0}
+.wrap{max-width:740px;margin:0 auto;padding:40px 34px 90px}
+@media (max-width:880px){.wrap{padding:30px 20px 70px}}
+.view{display:none}
+.view.on{display:block;animation:vin .35s ease}
+@keyframes vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- type ---------- */
+.kicker{
+  font-size:13px;letter-spacing:.16em;color:var(--gold-deep);
+  margin-bottom:12px;font-weight:600;
+}
+h2.title{
+  font-family:var(--disp);font-weight:480;font-size:clamp(30px,4.6vw,40px);
+  color:var(--ink);line-height:1.12;letter-spacing:-.01em;margin-bottom:14px;
+}
+h2.title em{font-style:italic;font-weight:420;color:var(--gold-deep)}
+.lede{font-size:17.5px;color:var(--ink-soft);max-width:60ch;margin-bottom:8px}
+h3.sec{
+  font-family:var(--disp);font-weight:540;font-size:22px;color:var(--ink);
+  margin:38px 0 10px;
+}
+p.b{margin:0 0 14px;max-width:64ch}
+p.b b{color:var(--ink);font-weight:600}
+.whisper{
+  font-family:var(--disp);font-style:italic;font-weight:430;
+  font-size:20px;color:var(--gold-deep);line-height:1.5;
+  border-left:2px solid var(--gold);padding:6px 0 6px 20px;margin:24px 0;
+  max-width:56ch;
+}
+
+/* ---------- cards & panels ---------- */
+.panel{
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:24px 26px;margin:18px 0;
+}
+.panel.goldline{border-color:rgba(180,145,78,.5);background:linear-gradient(180deg,#fffdf8,#fbf4e6)}
+.panel.inkpanel{background:var(--ink);color:#ddd6ea;border-color:var(--ink)}
+.panel.inkpanel h4{color:#fff}
+.pill{
+  display:inline-block;font-size:12.5px;letter-spacing:.08em;
+  background:var(--gold-wash);color:var(--gold-deep);
+  border-radius:20px;padding:4px 12px;font-weight:600;margin-bottom:10px;
+}
+.pill.sage{background:var(--euca-wash);color:var(--euca)}
+.pill.rosep{background:var(--rose);color:#8d5f43}
+
+/* facts row (design tab) */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px}
+.fact .fl{font-size:12px;letter-spacing:.1em;color:var(--muted);margin-bottom:5px}
+.fact .fv{font-family:var(--disp);font-size:18.5px;font-weight:540;color:var(--ink);line-height:1.25}
+.fact .fs{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* accordions */
+details.acc{border:1px solid var(--line);border-radius:9px;background:var(--card);margin:0 0 10px}
+details.acc summary{
+  cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;
+  padding:15px 18px;font-weight:600;color:var(--ink);font-size:15.5px;
+}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary .ag{font-family:var(--disp);color:var(--gold);flex-shrink:0}
+details.acc summary .caret{margin-left:auto;color:var(--muted);transition:transform .2s;font-size:13px}
+details.acc[open] summary .caret{transform:rotate(90deg)}
+details.acc .acc-body{padding:2px 18px 16px;color:var(--body)}
+details.acc .acc-body p{margin:0 0 12px;max-width:62ch}
+details.acc .acc-body p:last-child{margin-bottom:0}
+
+/* ---------- tasks ---------- */
+.progress-shell{margin:22px 0 6px}
+.progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.progress-top .pt-l{font-weight:600;color:var(--ink);font-size:15px}
+.progress-top .pt-r{font-size:13.5px;color:var(--muted)}
+.pbar{height:8px;border-radius:6px;background:#eee5d3;overflow:hidden}
+.pbar .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-deep));border-radius:6px;transition:width .45s ease}
+.week{margin:26px 0 8px}
+.week h4{
+  font-family:var(--disp);font-size:18px;font-weight:560;color:var(--ink);
+  display:flex;align-items:baseline;gap:10px;margin-bottom:4px;
+}
+.week h4 .wd{font-family:var(--ui);font-size:13px;color:var(--muted);font-weight:400}
+.week .wnote{font-size:14px;color:var(--muted);margin-bottom:10px;max-width:60ch}
+.task{
+  display:flex;gap:13px;align-items:flex-start;
+  background:var(--card);border:1px solid var(--line);border-radius:9px;
+  padding:13px 16px;margin-bottom:8px;cursor:pointer;
+  transition:border-color .15s,background .15s;
+}
+.task:hover{border-color:var(--gold)}
+.task .box{
+  width:21px;height:21px;border-radius:6px;border:1.6px solid var(--rose-deep);
+  flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:12px;transition:background .15s,border-color .15s;
+}
+.task.done{background:var(--euca-wash);border-color:var(--euca-wash)}
+.task.done .box{background:var(--euca);border-color:var(--euca)}
+.task.done .tt{color:var(--euca);text-decoration:line-through;text-decoration-thickness:1px}
+.task .tt{font-size:15px;color:var(--ink);font-weight:500;line-height:1.45}
+.task .ts{font-size:13.5px;color:var(--muted);margin-top:2px;line-height:1.5}
+.mine{margin-top:8px}
+.mine li{margin:0 0 7px 18px;font-size:14.5px}
+
+/* ---------- journals / inputs ---------- */
+textarea.jr{
+  width:100%;min-height:120px;resize:vertical;
+  font-family:var(--ui);font-size:15px;line-height:1.6;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:9px;
+  padding:14px 16px;
+}
+textarea.jr:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.savestate{font-size:12.5px;color:var(--muted);margin-top:6px;min-height:16px}
+input.qin{
+  width:100%;font-family:var(--ui);font-size:15px;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:9px;
+  padding:12px 15px;
+}
+input.qin:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.btn{
+  font-family:var(--ui);font-size:14.5px;font-weight:600;cursor:pointer;
+  border-radius:8px;padding:10px 18px;border:1.5px solid var(--ink);
+  background:var(--ink);color:#fff;transition:opacity .15s,transform .1s;
+}
+.btn:hover{opacity:.88}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.goldb{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn.sageb{background:var(--euca);border-color:var(--euca)}
+.btn.roseb{background:transparent;border-color:var(--rose-deep);color:#8d5f43}
+.btn[disabled]{opacity:.45;cursor:default;transform:none}
+.loglist{margin-top:16px}
+.logitem{
+  display:flex;gap:12px;align-items:flex-start;
+  border-bottom:1px solid var(--line);padding:10px 2px;font-size:14.5px;
+}
+.logitem .when{flex-shrink:0;color:var(--muted);font-size:12.5px;width:74px;padding-top:2px}
+.logitem .what{color:var(--ink)}
+.logitem .ans{font-weight:700}
+.ans.yes{color:var(--euca)} .ans.no{color:#a34e3f} .ans.flat{color:var(--muted)}
+.empty{font-size:14px;color:var(--muted);font-style:italic;margin-top:10px}
+
+/* wave buttons */
+.wavegrid{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.wavegrid button{
+  flex:1;min-width:96px;background:var(--card);border:1.5px solid var(--line);
+  border-radius:9px;padding:12px 8px;cursor:pointer;font-family:var(--ui);
+  font-size:14px;color:var(--ink);font-weight:600;transition:border-color .15s,background .15s;
+}
+.wavegrid button span{display:block;font-family:var(--disp);font-size:19px;margin-bottom:3px;color:var(--gold-deep)}
+.wavegrid button:hover{border-color:var(--gold)}
+.wavegrid button.sel{background:var(--gold-wash);border-color:var(--gold)}
+
+/* ---------- ideas & tapping ---------- */
+.idea{
+  border:1px solid var(--line);border-radius:9px;background:var(--card);
+  padding:14px 16px;margin-bottom:9px;
+}
+.idea .it{font-size:15px;color:var(--ink);font-weight:500;line-height:1.5}
+.idea.released .it{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px;font-weight:400}
+.idea .imeta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.idea .ibadge{font-weight:700;font-size:12.5px}
+.idea .ibadge.keep{color:var(--gold-deep)}
+.idea .ibadge.rest{color:var(--rose-deep);font-style:italic;font-weight:500}
+.idea .ibtn{
+  font-family:var(--ui);font-size:12.5px;font-weight:600;cursor:pointer;
+  border-radius:6px;padding:5px 11px;border:1.3px solid var(--line);background:#fff;color:var(--ink);
+}
+.idea .ibtn:hover{border-color:var(--gold)}
+.idea .ibtn.undo{border:none;background:none;color:var(--muted);text-decoration:underline;padding:5px 2px}
+.tapscript{margin-bottom:26px}
+.setupline{
+  background:var(--gold-wash);border:1px solid rgba(180,145,78,.4);border-radius:9px;
+  padding:14px 17px;font-family:var(--disp);font-style:italic;font-size:16.5px;
+  color:var(--gold-deep);line-height:1.55;margin:10px 0 12px;
+}
+.setupline b{font-family:var(--ui);font-style:normal;font-size:12px;letter-spacing:.1em;color:var(--gold-deep);display:block;margin-bottom:5px}
+.tapline{display:flex;gap:12px;padding:7px 2px;border-bottom:1px solid var(--line);font-size:14.5px}
+.tapline:last-child{border-bottom:none}
+.tapline .pt{flex-shrink:0;width:106px;font-size:12px;letter-spacing:.05em;color:var(--gold-deep);font-weight:700;padding-top:2px}
+.tapline .tx{color:var(--ink)}
+details.acc.script{border-color:rgba(180,145,78,.5);margin-bottom:14px}
+details.acc.script > summary{font-family:var(--disp);font-size:18.5px;font-weight:560;padding:17px 19px}
+details.acc.script > .acc-body{padding:4px 19px 18px}
+.roundfocus{
+  font-size:14px;color:#7d5a41;background:#f7ece2;border-radius:8px;
+  padding:11px 14px;margin-bottom:12px;line-height:1.55;
+}
+.roundfocus b{font-size:11.5px;letter-spacing:.12em;color:#a3703f;display:block;margin-bottom:3px}
+.suds{margin:16px 0 6px}
+.suds-l{font-size:14.5px;font-weight:600;color:var(--ink)}
+.suds-nums{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.suds-nums button{
+  width:35px;height:35px;border-radius:8px;border:1.4px solid var(--line);
+  background:#fff;font-family:var(--ui);font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;
+  transition:background .12s,border-color .12s;
+}
+.suds-nums button:hover{border-color:var(--gold)}
+.suds-nums button.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.suds-delta{font-size:14px;color:var(--euca);font-weight:600;margin-top:10px;min-height:18px}
+.pacer{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+.pacer .psmall{padding:8px 15px;font-size:13.5px}
+.pchip{
+  border:1.3px solid var(--line);background:#fff;border-radius:20px;
+  padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--ink);
+  cursor:pointer;font-family:var(--ui);transition:border-color .12s;
+}
+.pchip:hover{border-color:var(--gold)}
+.plabel{font-size:12.5px;color:var(--muted)}
+/* ---------- misc ---------- */
+.next-call{
+  display:flex;gap:16px;align-items:center;
+  background:var(--ink);color:#ddd6ea;border-radius:12px;padding:20px 24px;margin:22px 0;
+}
+.next-call .cg{font-family:var(--disp);font-size:30px;color:var(--gold);flex-shrink:0}
+.next-call b{color:#fff}
+.next-call .ncs{font-size:13.5px;color:#a79dbd;margin-top:2px}
+.footer{
+  margin-top:60px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--muted);
+}
+.footer .sig{font-family:var(--disp);font-style:italic;font-size:17px;color:var(--gold-deep);margin-bottom:4px}
+.storenote{font-size:12.5px;color:var(--muted);margin-top:14px}
+</style>
+</head>
+<body>
+<div class="mbar">
+  <div class="mtitle">Yolanda's Portal <span>VIP · September</span></div>
+  <div class="mdd">
+    <button type="button" class="mdd-btn" id="mdd-btn" aria-haspopup="listbox" aria-expanded="false">
+      <span class="mdd-g" id="mdd-g">✦</span><span id="mdd-label">Welcome</span><span class="mdd-caret">▾</span>
+    </button>
+    <div class="mdd-list" id="mdd-list" role="listbox"></div>
+  </div>
+</div>
+
+<div class="shell">
+<aside class="side">
+  <div class="brand">
+    <div class="star">✦</div>
+    <h1>Yolanda's Portal</h1>
+    <span class="vip">VIP · September 2026</span>
+  </div>
+  <nav class="nav" id="nav"></nav>
+  <div class="side-foot">Held by <b>Aurailia</b><br>One month, one thing, done well.</div>
+</aside>
+
+<main class="main"><div class="wrap">
+
+<!-- ================= WELCOME ================= -->
+<section class="view" id="v-welcome">
+  <div class="kicker">WELCOME, YOLANDA</div>
+  <h2 class="title">This is your room <em>for September.</em></h2>
+  <p class="lede">Everything for this month lives here. Your plan, your call notes, your design, a daily pull, and a few small tools built the way your energy actually works. It remembers where you left off, so come back anytime.</p>
+
+  <div class="next-call">
+    <div class="cg">✦</div>
+    <div>
+      <b>Our September strategy call · book your spot and the date drops in here</b>
+      <div class="ncs">One gentle question waits in the Call Space. That's the only prep.</div>
+    </div>
+  </div>
+
+  <h3 class="sec">A note from me before we talk</h3>
+  <p class="b">You came in with three clear goals and a finished three-part kit before we even had our first strategy call. So let's name it: the work was never the problem. This month is not about doing more — it's about pointing everything you've already built at one doorway, the village, in the right order. My job is to hold that order. Your job is to show up and respond to real moms.</p>
+  <div class="whisper">You know enough. You just stopped trusting it. So this month, your gut gets the final vote on everything.</div>
+  <p class="b">One tab is ready for you now: Your Reflection, where the answers you sent me this week come back to you, read through your design. Start there if you read anything before our call.</p>
+
+  <h3 class="sec">How this portal works</h3>
+  <div class="panel goldline">
+    <p class="b" style="margin-bottom:10px"><b>It fills in as we go.</b> After each call, the plan and the call summary land here, so nothing lives in your head or a lost email thread.</p>
+    <p class="b" style="margin-bottom:0">The Check In tools, the Idea Log and the Tapping scripts are yours from today. Everything you write saves privately and is here when you come back.</p>
+  </div>
+</section>
+
+<!-- ================= REFLECTION ================= -->
+<section class="view" id="v-reflect">
+  <div class="kicker">SEPTEMBER · YOUR WORDS, READ BACK</div>
+  <h2 class="title">What you sent me, <em>through your design.</em></h2>
+  <p class="lede">Every month I ask you three questions. Your answers come back here, read through your chart. What's below are things I noticed and want to look at with you. Not conclusions.</p>
+
+  <h3 class="sec">1. Your goals this month</h3>
+  <div class="panel">
+    <span class="pill">YOU WROTE</span>
+    <p class="b">“My top goals for September: 1) Have my lead magnets for each of my content pillars inside my Skool community (and collecting emails). 2) Grow my membership with 10 moms. 3) Launch my coaching offer at the end of September.”</p>
+  </div>
+  <p class="b">Three goals, one sequence. The kit becomes the doorway, the doorway brings the moms, and the moms are exactly who the coaching offer opens to. Nothing on this list is separate — which is why it's doable in one month. You're not building three things. You're building one pipeline, in three steps, in order.</p>
+  <p class="b">One reading through your chart: ten moms is ten real conversations, not a launch. With your cross, growth moves person to person when you're lit up — so we aim your energy at the homeschool and mom groups where you're responding to real women, and let the number follow the conversations. And the coaching offer at month's end opens to a warm room as a founding offer, which is the honest version of a first launch.</p>
+
+  <h3 class="sec">2. What's holding you back</h3>
+  <div class="panel">
+    <span class="pill">YOU WROTE</span>
+    <p class="b">“It's not that I don't have the time, or the knowledge, or the know-how. I think I just need focus. No shiny objects — I just want this one.”</p>
+  </div>
+  <p class="b">Read through your design, this was never a focus problem — it's a response problem. Generators scatter when they initiate from the head: every shiny object is your mind volunteering you for something your gut never said yes to. The frustration that follows isn't a character flaw. It's your not-self theme doing its one job: telling you that you pushed instead of responded.</p>
+  <p class="b">So focus, for you, is not discipline. It's one clear sacral yes, protected. That's half of what this portal is for — the Idea Log catches the shiny objects so they stop circling your head at 2am, and the gut check puts your yes on the record where you can see it. You already said the answer yourself: no shiny objects, just this one.</p>
+
+  <h3 class="sec">3. Where you want the call to focus</h3>
+  <div class="panel">
+    <span class="pill">YOU WROTE</span>
+    <p class="b">“Here is the Google doc of the Morning by Design guide … I also created a playguide for littlies based on energy type, and a planner as well. This is the 1st pillar of my content — this is how I would guide her to start her day based on her energy type. Thank you for looking at it for me!”</p>
+  </div>
+  <p class="b">I read all three, and the honest headline is: the system is complete. The guide teaches it, the planner runs it, and Kid Time buys you the fifteen minutes to actually do it. Kid Time is the star — it solves the objection every homeschool mom really has, which is “I can't have a morning routine, my kids are awake.” Nothing in my review says start over. It says polish and ship.</p>
+  <p class="b">Three things before it goes live: one name everywhere — Morning by Design, not “Miracle Morning,” which is Hal Elrod's trademark (crediting him inside the guide the way you did is exactly right) — one icon set across all three docs, and lead with the Emergency 5-Minute version, so a mom in survival mode meets the doable thing first. We'll walk through the rest on our call.</p>
+
+  <div class="whisper">You didn't come here to learn how to work harder. You came here to remember the sound of your own yes — and to build a village on it.</div>
+</section>
+
+<!-- ================= SEPTEMBER PLAN ================= -->
+<section class="view" id="v-plan">
+  <div class="kicker">THE PLAN</div>
+  <h2 class="title">September, <em>coming after our call.</em></h2>
+  <p class="lede">There is no plan in here yet, and that is on purpose. We build it together on our call, so it comes from what you actually say yes to, not from what looks good on paper.</p>
+  <div class="panel goldline">
+    <span class="pill">AFTER OUR CALL</span>
+    <p class="b">This tab fills in with simple weekly tasks, each one small enough for a clear gut answer, plus a running list of everything Aurailia is taking off your plate. You will tap tasks to mark them done and watch the month move.</p>
+    <p class="b" style="margin-bottom:0">Until then, nothing to do here. The Check In, Idea Log and Tapping tabs are open whenever you want them.</p>
+  </div>
+</section>
+
+<!-- ================= CALL SPACE ================= -->
+<section class="view" id="v-call">
+  <div class="kicker">OUR CALLS</div>
+  <h2 class="title">The call <em>space.</em></h2>
+  <p class="lede">Summaries from each VIP call live here so nothing gets lost between sessions. Before we talk, there is one small piece of prep below, and it is a gentle one.</p>
+
+  <h3 class="sec">September strategy call</h3>
+  <div class="panel goldline">
+    <span class="pill">FOCUS</span>
+    <p class="b">Your Morning by Design kit and the September order of operations: the kit goes live in Skool as your Pillar 1 doorway, ten moms come through it, and the coaching offer opens at the end of the month to a warm room — as a founding offer, not a cold launch.</p>
+    <p class="b" style="margin-bottom:0">Whatever we find about the stall, and whatever plan we decide on, gets written up right here after the call. No conclusions before then.</p>
+  </div>
+
+  <h3 class="sec">One question before we talk</h3>
+  <p class="b">Do not think hard about this. First answer only.</p>
+  <div class="panel">
+    <p class="b" style="font-weight:600;color:var(--ink)">Picture the last day of September. The kit is live in the village, ten new moms are inside, and your coaching offer is open. When you read that sentence, what does your body do first — and where do you feel it?</p>
+    <textarea class="jr" id="jr-prep" placeholder="Write whatever comes. A sentence is plenty."></textarea>
+    <div class="savestate" id="ss-prep"></div>
+  </div>
+
+  <h3 class="sec">Your notes, anytime</h3>
+  <div class="panel">
+    <p class="b">Anything you want to remember, ask me, or bring to a call. This saves as you type.</p>
+    <textarea class="jr" id="jr-notes" placeholder="Thoughts, questions, things that surfaced during the week..."></textarea>
+    <div class="savestate" id="ss-notes"></div>
+  </div>
+</section>
+
+<!-- ================= YOUR DESIGN ================= -->
+<section class="view" id="v-design">
+  <div class="kicker">YOUR DESIGN</div>
+  <h2 class="title">How you are <em>built to work.</em></h2>
+  <p class="lede">The short version of your Business Alignment Blueprint, kept here so it is always one tap away. This is the operating manual for everything we do this month.</p>
+
+  <div class="facts">
+    <div class="fact"><div class="fl">TYPE</div><div class="fv">Generator</div><div class="fs">The Life Force — sustainable energy, when it's responding</div></div>
+    <div class="fact"><div class="fl">AUTHORITY</div><div class="fv">Sacral</div><div class="fs">Your gut answers before your mind gets a vote</div></div>
+    <div class="fact"><div class="fl">PROFILE</div><div class="fv">3/5</div><div class="fs">The Great Life Experimenter — learns by doing</div></div>
+    <div class="fact"><div class="fl">CROSS</div><div class="fv">Cross of Contagion</div><div class="fs">Right Angle · 14/8 | 29/30 — your lit-up energy spreads</div></div>
+    <div class="fact"><div class="fl">SIGNATURE</div><div class="fv">Satisfaction</div><div class="fs">The feeling that tells you you're on track</div></div>
+    <div class="fact"><div class="fl">NOT-SELF</div><div class="fv">Frustration</div><div class="fs">The signal you pushed instead of responded</div></div>
+  </div>
+
+  <h3 class="sec">The five rules that matter this month</h3>
+  <details class="acc" open>
+    <summary><span class="ag">✦</span>Respond, don't initiate<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Your energy is built to answer, not to chase. In practice: drop the kit, ask the question, comment in the group — then respond to the real moms who show up. Cold outreach and forced content calendars will always end in frustration for you. Put prompts out into the world, and let your growth come from what answers back.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">✦</span>Your gut is the CEO<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Every decision this month gets said out loud as a yes/no question, and the sound that comes back wins — even over your smartest plan. Uh-huh means go. Uh-uh means no, even when the idea looks perfect on paper. Nothing there means not yet, and not-yet is a complete answer.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">✦</span>Everything is version one<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Your 3 line learns by trying, not by theorizing. The lead magnet doesn't need to be perfect — it needs to be in front of moms so it can teach you what works. What looks like a mistake is your profile collecting data. Ship it, watch what happens, adjust. That's not failing, that's the method.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">✦</span>Let them find you lit<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Cross of Contagion means you don't grow by convincing — you grow because moms catch what you have. A voice note recorded on a good day will outperform a polished post made on a flat one, every time. Protecting your lit-up state isn't self-indulgence. It's your entire marketing plan.</p>
+    </div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">✦</span>Guide when invited<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Your 5 line draws projection: moms will decide you have their answer before they've even met you. Let them come close first — comments, questions, the free layer of the village — and save the deep guidance for the ones who ask. That keeps the projection working for you instead of on you, and it keeps you out of the over-promising trap.</p>
+    </div>
+  </details>
+
+  <h3 class="sec">Your daily decision protocol</h3>
+  <div class="panel inkpanel">
+    <p class="b" style="color:#ddd6ea"><b style="color:#fff">Small decisions:</b> Say it out loud as a yes/no question — “Do I want to write this post today?” — and follow the first sound, not the second thought. If nothing comes, it's a not-now, and not-now counts.</p>
+    <p class="b" style="color:#ddd6ea;margin-bottom:0"><b style="color:#fff">Big decisions:</b> Don't decide alone in your head — your sacral needs something to respond to. Voxer me and I'll ask you yes/no questions until the answer comes out of your body instead of your mind. Then sleep on it once and ask again in the morning. Two gut yeses make a real yes.</p>
+  </div>
+</section>
+<!-- ================= CHECK IN ================= -->
+<section class="view" id="v-checkin">
+  <div class="kicker">DAILY TOOLS</div>
+  <h2 class="title">Check <em>in.</em></h2>
+  <p class="lede">Two small practices, one minute each. They put your gut on the record, so patterns become visible instead of vague.</p>
+
+  <h3 class="sec">Ask your Sacral</h3>
+  <div class="panel">
+    <p class="b">Type a yes or no question, say it out loud, and log the sound your body made before your mind got a vote. Uh-huh, uh-uh, or nothing at all.</p>
+    <input class="qin" id="sac-q" placeholder="Do I want to work on this today?">
+    <div class="btnrow">
+      <button type="button" class="btn sageb" id="sac-yes">Uh-huh · yes</button>
+      <button type="button" class="btn roseb" id="sac-no">Uh-uh · no</button>
+      <button type="button" class="btn ghost" id="sac-flat">Nothing there</button>
+    </div>
+    <div class="loglist" id="sac-log"><div class="empty">No questions logged yet. The first one is the strangest, then it becomes second nature.</div></div>
+  </div>
+
+  <h3 class="sec">Satisfied or frustrated?</h3>
+  <div class="panel">
+    <p class="b">One tap, ideally at the end of the day. In your design these two feelings are the whole scoreboard: satisfaction means you spent your energy on real yeses, frustration means somewhere you pushed or said yes with your head. No judgment either way. Over the weeks this becomes a map of what actually lights you up.</p>
+    <div class="wavegrid">
+      <button type="button" data-wave="Lit up"><span>☀</span>Lit up</button>
+      <button type="button" data-wave="Satisfied"><span>✶</span>Satisfied</button>
+      <button type="button" data-wave="Meh"><span>─</span>Meh</button>
+      <button type="button" data-wave="Frustrated"><span>◡</span>Frustrated</button>
+      <button type="button" data-wave="Fried"><span>☾</span>Fried</button>
+    </div>
+    <div class="loglist" id="wave-log"><div class="empty">No check ins yet.</div></div>
+  </div>
+</section>
+
+<!-- ================= IDEA LOG ================= -->
+<section class="view" id="v-ideas">
+  <div class="kicker">CATCH NOW, DECIDE LATER</div>
+  <h2 class="title">The idea <em>log.</em></h2>
+  <p class="lede">Ideas land all day long, and your head will call every one of them urgent. Your gut knows better, but only in response, not in the excitement of the moment. So we split the two jobs. Catch the idea the second it lands, then leave it alone overnight. Tomorrow, say it out loud as a yes/no question and listen for the sound. Still gets an uh-huh? It's real. Gone flat? It was never yours to carry, and you can release it without guilt.</p>
+  <div class="panel">
+    <input class="qin" id="idea-in" placeholder="A program idea, a post, a collab, anything...">
+    <div class="btnrow"><button type="button" class="btn goldb" id="idea-add">Catch it</button></div>
+    <div class="loglist" id="idea-log"><div class="empty">Nothing caught yet. The next idea that flies past goes here instead of around your head at 2am.</div></div>
+  </div>
+</section>
+
+<!-- ================= TAPPING ================= -->
+<section class="view" id="v-tapping">
+  <div class="kicker">EFT · WRITTEN FOR YOU</div>
+  <h2 class="title">Tapping <em>scripts.</em></h2>
+  <p class="lede">Written from your chart and your own words. Change any line that doesn't sound like you. Open a script, rate how strong the feeling is before you start, tap through the rounds, then rate it again. Start each script with the setup on the karate chop point, said three times.</p>
+
+  <details class="acc script" id="script-s1">
+    <summary><span class="ag">✦</span>When the frustration moves in<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p class="b">This one is written from your chart. Frustration is your not-self theme — it shows up when you've been pushing, chasing, or initiating instead of responding. Use this script the moment you notice that revved-up, nothing-is-moving feeling, before it turns into a story about you.</p>
+      <div class="suds" data-s="s1" data-pos="before"><div class="suds-l">Before you tap: how strong is it right now? 0 is nothing, 10 is a lot.</div><div class="suds-nums"></div></div>
+      <div class="pacer" data-s="s1"><button type="button" class="btn goldb psmall pace-toggle">▶ Start guided pace</button><button type="button" class="pchip pace-slower">− slower</button><button type="button" class="pchip pace-faster">+ faster</button><span class="plabel"></span></div>
+      <div class="setupline"><b>SETUP · KARATE CHOP · SAY 3 TIMES</b>“Even though I'm frustrated and it feels like nothing is moving fast enough, I love and accept myself, and I trust that my energy knows the way.”</div>
+      <details class="acc" open><summary><span class="ag">1</span>Round one: naming it<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Let the frustration be here. Don't fix it yet — just say it out loud.</div><div class="tapline"><span class="pt">EYEBROW</span><span class="tx">All this frustration</span></div><div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">I'm pushing and pushing and it isn't moving</span></div><div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">I look at everything still not done</span></div><div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">And I make it mean I'm behind</span></div><div class="tapline"><span class="pt">CHIN</span><span class="tx">This tight, revved-up feeling in my body</span></div><div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">Trying to force what won't flow</span></div><div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">I am so tired of pushing</span></div><div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">All this frustration — and I'm allowed to feel it</span></div></div></details><details class="acc" open><summary><span class="ag">2</span>Round two: softening<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Soften the story. In your design, frustration isn't proof you're failing — it's a signal you initiated instead of responded.</div><div class="tapline"><span class="pt">EYEBROW</span><span class="tx">What if frustration is just a signal</span></div><div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">Not a verdict on me</span></div><div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">It shows up when I push instead of respond</span></div><div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">When I chase instead of letting it come to me</span></div><div class="tapline"><span class="pt">CHIN</span><span class="tx">Maybe I don't have to force this</span></div><div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">My energy was never the problem</span></div><div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">This gut of mine has been right my whole life</span></div><div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">I can let it lead again</span></div></div></details><details class="acc" open><summary><span class="ag">3</span>Round three: choosing<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Now choose the way your energy actually works. Say these like decisions, not hopes.</div><div class="tapline"><span class="pt">EYEBROW</span><span class="tx">I choose to respond, not chase</span></div><div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">I choose the one thing my gut said yes to</span></div><div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">I let satisfaction be my proof</span></div><div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">I trust the uh-huh and I trust the uh-uh</span></div><div class="tapline"><span class="pt">CHIN</span><span class="tx">My frustration points me home, every time</span></div><div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">I don't have to earn my rest</span></div><div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">I'm building this village my way</span></div><div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">And my way works</span></div></div></details>
+      <div class="suds" data-s="s1" data-pos="after"><div class="suds-l">Now take a slow breath and check again. Where is it now?</div><div class="suds-nums"></div></div>
+      <div class="suds-delta" data-s="s1"></div>
+    </div>
+  </details>
+
+  <details class="acc script" id="script-s2">
+    <summary><span class="ag">✦</span>No shiny objects — the focus script<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p class="b">This one is written from your own words: “It's not time, knowledge, or know-how — I just need focus,” and “no shiny objects, I just want this one.” Use it when the new ideas start circling, or when the old story about not being consistent starts talking.</p>
+      <div class="suds" data-s="s2" data-pos="before"><div class="suds-l">Before you tap: how strong is it right now? 0 is nothing, 10 is a lot.</div><div class="suds-nums"></div></div>
+      <div class="pacer" data-s="s2"><button type="button" class="btn goldb psmall pace-toggle">▶ Start guided pace</button><button type="button" class="pchip pace-slower">− slower</button><button type="button" class="pchip pace-faster">+ faster</button><span class="plabel"></span></div>
+      <div class="setupline"><b>SETUP · KARATE CHOP · SAY 3 TIMES</b>“Even though my mind runs to every shiny new idea and tells me I'm not doing enough, I deeply and completely accept myself — and I choose this one thing.”</div>
+      <details class="acc" open><summary><span class="ag">1</span>Round one: naming it<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Name the scatter honestly. It's been running the show quietly, and naming it takes its power.</div><div class="tapline"><span class="pt">EYEBROW</span><span class="tx">All these ideas pulling at me</span></div><div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">Every shiny object promising this is the one</span></div><div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">Starting things, dropping things</span></div><div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">Then blaming myself for not being consistent</span></div><div class="tapline"><span class="pt">CHIN</span><span class="tx">This voice that says I'm not doing enough</span></div><div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">I know enough — but I haven't been acting like I trust it</span></div><div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">Scattered, stalled, and annoyed about it</span></div><div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">And underneath it all, I just want this one thing</span></div></div></details><details class="acc" open><summary><span class="ag">2</span>Round two: softening<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Soften it. The scatter was never a character flaw — it was your head saying yes to things your gut never did.</div><div class="tapline"><span class="pt">EYEBROW</span><span class="tx">What if I'm not inconsistent</span></div><div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">What if I've just been saying yes with my head</span></div><div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">My head chases shiny — my gut knows mine</span></div><div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">I finished the course, I built the whole kit</span></div><div class="tapline"><span class="pt">CHIN</span><span class="tx">The knowing is already in me</span></div><div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">I stopped trusting it — and I can start again</span></div><div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">Focus was never discipline for me</span></div><div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">Focus is one clear yes, honored daily</span></div></div></details><details class="acc" open><summary><span class="ag">3</span>Round three: choosing<span class="caret">›</span></summary><div class="acc-body"><div class="roundfocus"><b>WHAT TO FEEL THIS ROUND</b>Now claim it. One village. One month. One yes at a time.</div><div class="tapline"><span class="pt">EYEBROW</span><span class="tx">I choose my village</span></div><div class="tapline"><span class="pt">SIDE OF EYE</span><span class="tx">I choose the moms who need this</span></div><div class="tapline"><span class="pt">UNDER EYE</span><span class="tx">One doorway, live, is enough</span></div><div class="tapline"><span class="pt">UNDER NOSE</span><span class="tx">Ten real conversations, one at a time</span></div><div class="tapline"><span class="pt">CHIN</span><span class="tx">I show up lit, and it spreads</span></div><div class="tapline"><span class="pt">COLLARBONE</span><span class="tx">That's my design — contagious</span></div><div class="tapline"><span class="pt">UNDER ARM</span><span class="tx">I release every idea that isn't now</span></div><div class="tapline"><span class="pt">TOP OF HEAD</span><span class="tx">This one. I want this one.</span></div></div></details>
+      <div class="suds" data-s="s2" data-pos="after"><div class="suds-l">Now take a slow breath and check again. Where is it now?</div><div class="suds-nums"></div></div>
+      <div class="suds-delta" data-s="s2"></div>
+    </div>
+  </details>
+
+  <div class="panel" style="margin-top:22px">
+    <span class="pill rosep">AFTER OUR CALL</span>
+    <p class="b" style="margin-bottom:0">If our call surfaces something specific, a third script gets added here, written around your exact words. EFT or Ho'oponopono, whichever fits what comes up.</p>
+  </div>
+</section>
+
+<!-- ================= WINS ================= -->
+<section class="view" id="v-wins">
+  <div class="kicker">EVIDENCE</div>
+  <h2 class="title">The wins <em>ledger.</em></h2>
+  <p class="lede">A busy mind forgets every win by Friday, so we keep the evidence here. Anything counts: a recording made, a rest actually taken, a clean no, a flat sound honored instead of overridden.</p>
+  <div class="panel">
+    <input class="qin" id="win-in" placeholder="What happened?">
+    <div class="btnrow"><button type="button" class="btn goldb" id="win-add">Add it to the ledger</button></div>
+    <div class="loglist" id="win-log"><div class="empty">Empty for now. It will not stay that way.</div></div>
+  </div>
+  <div class="footer">
+    <div class="sig">I believe in you. To living your dreams.</div>
+    Aurailia · Yolanda · VIP September 2026
+    <div class="storenote">Everything you write here is saved privately in this portal and is here when you return.</div>
+  </div>
+</section>
+
+</div></main>
+</div>
+<script>
+/* ============ data ============ */
+const VIEWS=[
+  {id:"welcome",label:"Welcome",g:"✦"},
+  {id:"reflect",label:"Your Reflection",g:"◈"},
+  {id:"plan",label:"September Plan",g:"◆"},
+  {id:"call",label:"Call Space",g:"★"},
+  {id:"design",label:"Your Design",g:"✧"},
+  {id:"checkin",label:"Check In",g:"◠"},
+  {id:"ideas",label:"Idea Log",g:"✺"},
+  {id:"tapping",label:"Tapping",g:"☾"},
+  {id:"wins",label:"Wins Ledger",g:"✶"}
+];
+
+
+
+/* ============ storage ============ */
+const mem={};
+async function sGet(k){
+  try{ if(window.storage){ const r=await window.storage.get(k); return r?JSON.parse(r.value):null; } }
+  catch(e){}
+  return mem[k]!==undefined?mem[k]:null;
+}
+async function sSet(k,v){
+  mem[k]=v;
+  try{ if(window.storage){ await window.storage.set(k,JSON.stringify(v)); } }catch(e){}
+}
+function todayKey(){
+  const d=new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
+function niceDate(k){
+  const [y,m,d]=k.split("-").map(Number);
+  return new Date(y,m-1,d).toLocaleDateString("en-US",{month:"short",day:"numeric"});
+}
+function nowStamp(){
+  return new Date().toLocaleDateString("en-US",{month:"short",day:"numeric"});
+}
+
+/* ============ nav ============ */
+const navEl=document.getElementById("nav");
+const mddEl=document.querySelector(".mdd");
+const mddBtn=document.getElementById("mdd-btn");
+const mddList=document.getElementById("mdd-list");
+function closeMdd(){mddEl.classList.remove("open");mddBtn.setAttribute("aria-expanded","false");}
+function go(id){
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+id));
+  document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===id));
+  document.querySelectorAll("#mdd-list button").forEach(b=>b.classList.toggle("on",b.dataset.v===id));
+  const v=VIEWS.find(x=>x.id===id);
+  if(v){document.getElementById("mdd-label").textContent=v.label;document.getElementById("mdd-g").textContent=v.g;}
+  closeMdd();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+VIEWS.forEach(v=>{
+  const b=document.createElement("button");
+  b.type="button";
+  b.dataset.v=v.id;
+  b.innerHTML='<span class="g">'+v.g+'</span>'+v.label+'<span class="tick" id="tick-'+v.id+'">✓</span>';
+  b.addEventListener("click",()=>go(v.id));
+  navEl.appendChild(b);
+  const mb=document.createElement("button");
+  mb.type="button";
+  mb.dataset.v=v.id;
+  mb.innerHTML='<span class="g">'+v.g+'</span>'+v.label;
+  mb.setAttribute("role","option");
+  mb.addEventListener("click",()=>go(v.id));
+  mddList.appendChild(mb);
+});
+mddBtn.addEventListener("click",e=>{
+  e.stopPropagation();
+  const open=mddEl.classList.toggle("open");
+  mddBtn.setAttribute("aria-expanded",open?"true":"false");
+});
+document.addEventListener("click",e=>{
+  if(!mddEl.contains(e.target)) closeMdd();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMdd();});
+go("welcome");
+
+/* ============ journals ============ */
+function wireJournal(taId,ssId,key){
+  const ta=document.getElementById(taId), ss=document.getElementById(ssId);
+  let t=null;
+  ta.addEventListener("input",()=>{
+    ss.textContent="Saving...";
+    clearTimeout(t);
+    t=setTimeout(async()=>{
+      await sSet(key,ta.value);
+      ss.textContent=ta.value.trim()?"Saved":"";
+      const tick=document.getElementById("tick-call");
+      if(tick&&taId==="jr-prep") tick.classList.toggle("done",!!ta.value.trim());
+    },600);
+  });
+}
+
+/* ============ sacral ============ */
+let sacLog=[];
+function renderSac(){
+  const el=document.getElementById("sac-log");
+  if(!sacLog.length){el.innerHTML='<div class="empty">No questions logged yet. The first one is the strangest, then it becomes second nature.</div>';return;}
+  el.innerHTML=sacLog.slice(0,14).map(i=>
+    '<div class="logitem"><div class="when">'+i.d+'</div><div class="what">'+esc(i.q)+' <span class="ans '+i.c+'">'+i.a+'</span></div></div>'
+  ).join("");
+}
+async function addSac(a,c){
+  const q=document.getElementById("sac-q").value.trim();
+  if(!q) return;
+  sacLog.unshift({q:q,a:a,c:c,d:nowStamp()});
+  sacLog=sacLog.slice(0,40);
+  await sSet("yolandavip:sacral",sacLog);
+  document.getElementById("sac-q").value="";
+  renderSac();
+}
+document.getElementById("sac-yes").addEventListener("click",()=>addSac("uh-huh","yes"));
+document.getElementById("sac-no").addEventListener("click",()=>addSac("uh-uh","no"));
+document.getElementById("sac-flat").addEventListener("click",()=>addSac("nothing","flat"));
+
+/* ============ wave ============ */
+let waveLog=[];
+function renderWave(){
+  const el=document.getElementById("wave-log");
+  if(!waveLog.length){el.innerHTML='<div class="empty">No check ins yet.</div>';return;}
+  el.innerHTML=waveLog.slice(0,10).map(i=>
+    '<div class="logitem"><div class="when">'+i.d+'</div><div class="what">'+esc(i.w)+'</div></div>'
+  ).join("");
+}
+document.querySelectorAll(".wavegrid button").forEach(b=>{
+  b.addEventListener("click",async()=>{
+    document.querySelectorAll(".wavegrid button").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    waveLog.unshift({w:b.dataset.wave,d:nowStamp()});
+    waveLog=waveLog.slice(0,30);
+    await sSet("yolandavip:wave",waveLog);
+    renderWave();
+    const tick=document.getElementById("tick-checkin");
+    if(tick) tick.classList.add("done");
+  });
+});
+
+/* ============ idea log ============ */
+let ideaLog=[];
+function daysSince(k){
+  const [y,mo,d]=k.split("-").map(Number);
+  const then=new Date(y,mo-1,d), now=new Date();
+  return Math.floor((new Date(now.getFullYear(),now.getMonth(),now.getDate())-then)/86400000);
+}
+function renderIdeas(){
+  const el=document.getElementById("idea-log");
+  if(!ideaLog.length){el.innerHTML='<div class="empty">Nothing caught yet. The next idea that flies past goes here instead of around your head at 2am.</div>';return;}
+  el.innerHTML="";
+  ideaLog.forEach((i,ix)=>{
+    const days=daysSince(i.k);
+    const wrap=document.createElement("div");
+    wrap.className="idea"+(i.st==="release"?" released":"");
+    let meta='<span>caught '+(days===0?"today":days===1?"yesterday":days+" days ago")+'</span>';
+    if(i.st==="keep"){
+      meta+='<span class="ibadge keep">✶ still a yes</span><button type="button" class="ibtn undo" data-a="undo" data-i="'+ix+'">undo</button>';
+    }else if(i.st==="release"){
+      meta+='<span class="ibadge" style="color:var(--muted)">released</span><button type="button" class="ibtn undo" data-a="undo" data-i="'+ix+'">undo</button>';
+    }else if(days<1){
+      meta+='<span class="ibadge rest">resting overnight · ask your gut tomorrow</span>';
+    }else{
+      meta+='<button type="button" class="ibtn" data-a="keep" data-i="'+ix+'">Still lights me up</button><button type="button" class="ibtn" data-a="release" data-i="'+ix+'">Gone flat</button>';
+    }
+    wrap.innerHTML='<div class="it">'+esc(i.t)+'</div><div class="imeta">'+meta+'</div>';
+    el.appendChild(wrap);
+  });
+  el.querySelectorAll(".ibtn").forEach(b=>{
+    b.addEventListener("click",async()=>{
+      const ix=+b.dataset.i, a=b.dataset.a;
+      ideaLog[ix].st=(a==="undo")?null:a;
+      await sSet("yolandavip:ideas",ideaLog);
+      renderIdeas();
+    });
+  });
+}
+document.getElementById("idea-add").addEventListener("click",async()=>{
+  const v=document.getElementById("idea-in").value.trim();
+  if(!v) return;
+  ideaLog.unshift({t:v,k:todayKey(),st:null});
+  ideaLog=ideaLog.slice(0,80);
+  await sSet("yolandavip:ideas",ideaLog);
+  document.getElementById("idea-in").value="";
+  renderIdeas();
+  const tick=document.getElementById("tick-ideas"); if(tick)tick.classList.add("done");
+});
+document.getElementById("idea-in").addEventListener("keydown",e=>{
+  if(e.key==="Enter") document.getElementById("idea-add").click();
+});
+
+/* ============ suds ============ */
+let sudsState={};
+async function setSuds(sc,pos,n){
+  sudsState[sc]=sudsState[sc]||{};
+  sudsState[sc][pos]=n;
+  await sSet("yolandavip:suds",sudsState);
+  renderSuds();
+}
+function renderSuds(){
+  document.querySelectorAll(".suds").forEach(el=>{
+    const v=(sudsState[el.dataset.s]||{})[el.dataset.pos];
+    el.querySelectorAll(".suds-nums button").forEach(b=>b.classList.toggle("sel",v!==undefined&&+b.textContent===v));
+  });
+  document.querySelectorAll(".suds-delta").forEach(d=>{
+    const st=sudsState[d.dataset.s]||{};
+    if(st.before!==undefined&&st.after!==undefined){
+      if(st.after<st.before) d.textContent="From "+st.before+" down to "+st.after+". That's the shift, well done.";
+      else if(st.after===st.before) d.textContent="Holding at "+st.before+". Run one more round, slower this time.";
+      else d.textContent="It went up, which usually means you touched something real. One more round, or bring it to our call.";
+    } else d.textContent="";
+  });
+}
+function initSuds(){
+  document.querySelectorAll(".suds").forEach(el=>{
+    const nums=el.querySelector(".suds-nums");
+    for(let n=0;n<=10;n++){
+      const b=document.createElement("button");
+      b.type="button"; b.textContent=n;
+      b.addEventListener("click",()=>setSuds(el.dataset.s,el.dataset.pos,n));
+      nums.appendChild(b);
+    }
+  });
+  renderSuds();
+}
+
+/* ============ guided pace ============ */
+const pacer={raf:null,speed:14,active:null,paused:false,last:undefined,acc:0};
+function paceLabel(){
+  return pacer.speed<=9?"very slow":pacer.speed<=15?"slow":pacer.speed<=23?"steady":"brisk";
+}
+function updatePacerUI(){
+  document.querySelectorAll(".pacer").forEach(p=>{
+    const on=pacer.active===p.dataset.s;
+    p.querySelector(".pace-toggle").textContent=on?(pacer.paused?"▶ Resume":"❚❚ Pause"):"▶ Start guided pace";
+    p.querySelector(".plabel").textContent="pace: "+paceLabel();
+  });
+}
+function stopPace(){
+  pacer.active=null;pacer.paused=false;pacer.last=undefined;pacer.acc=0;
+  if(pacer.raf){cancelAnimationFrame(pacer.raf);pacer.raf=null;}
+  updatePacerUI();
+}
+function stepPace(ts){
+  if(!pacer.active){pacer.raf=null;return;}
+  if(pacer.paused||pacer.last===undefined){pacer.last=ts;pacer.raf=requestAnimationFrame(stepPace);return;}
+  const dt=Math.min(ts-pacer.last,60);pacer.last=ts;
+  pacer.acc+=pacer.speed*dt/1000;
+  const px=Math.floor(pacer.acc);
+  if(px>=1){window.scrollBy(0,px);pacer.acc-=px;}
+  const d=document.getElementById("script-"+pacer.active);
+  const doc=document.documentElement;
+  const atDocEnd=window.innerHeight+window.scrollY>=doc.scrollHeight-2;
+  if((d&&d.getBoundingClientRect().bottom<=window.innerHeight-40)||atDocEnd){stopPace();return;}
+  pacer.raf=requestAnimationFrame(stepPace);
+}
+document.querySelectorAll(".pacer").forEach(p=>{
+  const sid=p.dataset.s;
+  p.querySelector(".pace-toggle").addEventListener("click",()=>{
+    if(pacer.active===sid){pacer.paused=!pacer.paused;pacer.last=undefined;pacer.acc=0;}
+    else{
+      const d=document.getElementById("script-"+sid);
+      if(d&&!d.open)d.open=true;
+      pacer.active=sid;pacer.paused=false;pacer.last=undefined;pacer.acc=0;
+      if(!pacer.raf)pacer.raf=requestAnimationFrame(stepPace);
+    }
+    updatePacerUI();
+  });
+  p.querySelector(".pace-slower").addEventListener("click",()=>{pacer.speed=Math.max(5,Math.round(pacer.speed*0.72));updatePacerUI();});
+  p.querySelector(".pace-faster").addEventListener("click",()=>{pacer.speed=Math.min(40,Math.round(pacer.speed/0.72));updatePacerUI();});
+});
+["wheel","touchmove"].forEach(ev=>{
+  window.addEventListener(ev,e=>{
+    if(e.target&&e.target.closest&&e.target.closest(".pacer"))return;
+    if(pacer.active&&!pacer.paused){pacer.paused=true;updatePacerUI();}
+  },{passive:true});
+});
+updatePacerUI();
+
+/* ============ wins ============ */
+let winLog=[];
+function renderWins(){
+  const el=document.getElementById("win-log");
+  if(!winLog.length){el.innerHTML='<div class="empty">Empty for now. It will not stay that way.</div>';return;}
+  el.innerHTML=winLog.slice(0,30).map(i=>
+    '<div class="logitem"><div class="when">'+i.d+'</div><div class="what">✶ '+esc(i.t)+'</div></div>'
+  ).join("");
+}
+document.getElementById("win-add").addEventListener("click",async()=>{
+  const v=document.getElementById("win-in").value.trim();
+  if(!v) return;
+  winLog.unshift({t:v,d:nowStamp()});
+  await sSet("yolandavip:wins",winLog);
+  document.getElementById("win-in").value="";
+  renderWins();
+});
+document.getElementById("win-in").addEventListener("keydown",e=>{
+  if(e.key==="Enter") document.getElementById("win-add").click();
+});
+
+/* ============ util & init ============ */
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+(async function init(){
+  sacLog=(await sGet("yolandavip:sacral"))||[];
+  waveLog=(await sGet("yolandavip:wave"))||[];
+  winLog=(await sGet("yolandavip:wins"))||[];
+  ideaLog=(await sGet("yolandavip:ideas"))||[];
+  sudsState=(await sGet("yolandavip:suds"))||{};
+  const prep=await sGet("yolandavip:jr-prep"); if(prep){document.getElementById("jr-prep").value=prep; const t=document.getElementById("tick-call"); if(t&&prep.trim())t.classList.add("done");}
+  const notes=await sGet("yolandavip:jr-notes"); if(notes)document.getElementById("jr-notes").value=notes;
+  wireJournal("jr-prep","ss-prep","yolandavip:jr-prep");
+  wireJournal("jr-notes","ss-notes","yolandavip:jr-notes");
+  renderSac(); renderWave(); renderWins(); renderIdeas(); initSuds();
+})();
+</script>
+</body>
+</html>
