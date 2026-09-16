@@ -195,6 +195,17 @@ details.acc .acc-body{padding:2px 18px 16px;color:var(--body)}
 details.acc .acc-body p{margin:0 0 12px;max-width:62ch}
 details.acc .acc-body p:last-child{margin-bottom:0}
 
+/* focus block */
+.focus{background:var(--ink);color:#ddd6ea;border-radius:12px;padding:24px 26px;margin:22px 0 8px}
+.focus-h{font-family:var(--disp);font-size:24px;font-weight:600;color:#fff;margin-bottom:6px}
+.focus-lede{font-size:15px;color:#b9b1c9;margin-bottom:14px;max-width:62ch}
+.frow{display:flex;gap:14px;padding:11px 0;border-top:1px solid rgba(180,145,78,.25)}
+.fn{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.3px solid var(--gold);color:var(--gold);font-family:var(--disp);font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.frow b{display:block;color:#fff;font-size:15.5px}
+.frow span{display:block;font-size:14px;color:#b9b1c9;line-height:1.55;margin-top:2px}
+.focus-end{margin-top:12px;padding-top:12px;border-top:1px solid rgba(180,145,78,.25);font-size:14.5px;color:#ddd6ea}
+.focus-end b{color:var(--gold)}
+
 /* ---------- tasks ---------- */
 .progress-shell{margin:22px 0 6px}
 .progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
@@ -385,15 +396,15 @@ details.acc.script > .acc-body{padding:4px 19px 18px}
   <div class="next-call">
     <div class="cg">✦</div>
     <div>
-      <b>Our September strategy call · book your spot and the date drops in here</b>
-      <div class="ncs">One gentle question waits in the Call Space. That's the only prep.</div>
+      <b>Kickoff call done · next 1:1 lands in October</b>
+      <div class="ncs">Book it when you're ready. Voxer is open all month.</div>
     </div>
   </div>
 
   <h3 class="sec">A note from me before we talk</h3>
   <p class="b">You came in with three clear goals and a finished three-part kit before we even had our first strategy call. So let's name it: the work was never the problem. This month is not about doing more — it's about pointing everything you've already built at one doorway, the village, in the right order. My job is to hold that order. Your job is to show up and respond to real moms.</p>
   <div class="whisper">You know enough. You just stopped trusting it. So this month, your gut gets the final vote on everything.</div>
-  <p class="b">One tab is ready for you now: Your Reflection, where the answers you sent me this week come back to you, read through your design. Start there if you read anything before our call.</p>
+  <p class="b">Start with the Call Recap if you want the short version of everything we decided. Then open the September Plan for the next two weeks, and the ROOT Build tab, where your Start Here mini course is mapped out day by day. Your Mirror Sheet is done and on its way to your inbox.</p>
 
   <h3 class="sec">How this portal works</h3>
   <div class="panel goldline">
@@ -438,35 +449,234 @@ details.acc.script > .acc-body{padding:4px 19px 18px}
 <!-- ================= SEPTEMBER PLAN ================= -->
 <section class="view" id="v-plan">
   <div class="kicker">THE PLAN</div>
-  <h2 class="title">September, <em>coming after our call.</em></h2>
-  <p class="lede">There is no plan in here yet, and that is on purpose. We build it together on our call, so it comes from what you actually say yes to, not from what looks good on paper.</p>
+  <h2 class="title">September 16 <em>to 30.</em></h2>
+  <p class="lede">Two weeks, in order. Before you start any task, ask your gut out loud if today is the day for it — if the answer is flat, pick a different one. They're all small enough to do in one sitting.</p>
+
+  <div class="focus">
+    <div class="focus-h">Our focus for the rest of September</div>
+    <p class="focus-lede">Everything below serves one goal: the village becomes a doorway that's actually open.</p>
+    <div class="frow"><div class="fn">1</div><div><b>Launch the ROOT Start Here</b><span>I'm building the artifact, fed by your Mirror Sheet. You record the days and set the drip. The full day-by-day map and build list live in the ROOT Build tab.</span></div></div>
+    <div class="frow"><div class="fn">2</div><div><b>Open your offers</b><span>Name the mom reading, publish Ways to Work With Me with working PayPal links, and open the one-month container as a founding offer.</span></div></div>
+    <div class="frow"><div class="fn">3</div><div><b>Go get the moms</b><span>A light, steady presence where they already are, then respond to every mom who answers. Ten moms, one conversation at a time.</span></div></div>
+    <p class="focus-end"><b>By September 30:</b> ROOT is live and dripping, your offers are open, and new moms are walking into the village.</p>
+  </div>
+
+  <div class="progress-shell">
+    <div class="progress-top"><span class="pt-l">These two weeks</span><span class="pt-r" id="plan-count">0 of 8 done</span></div>
+    <div class="pbar"><div class="fill"></div></div>
+  </div>
+
+  <div class="week">
+    <h4>Week of Sep 16 <span class="wd">Record + name things</span></h4>
+    <div class="wnote">Your recording work for the week lives in the ROOT Build tab — tick the days off there. These four clear the path around it.</div>
+    <div class="task" data-t="p-housekeeping"><div class="box"></div><div><div class="tt">Skool housekeeping</div><div class="ts">Hide the old "Build a Consistent Morning Routine" classroom and check why Morning by Design shows "unlock for $1" — you never set that.</div></div></div>
+    <div class="task" data-t="p-training"><div class="box"></div><div><div class="tt">Watch the Rebranding + GitHub training</div><div class="ts">Inside Embody Wealth, before you reskin anything else. Your Mirror Sheet is with you now, so the transits reskin can follow right after.</div></div></div>
+    <div class="task" data-t="p-offers"><div class="box"></div><div><div class="tt">Name the reading + write "Ways to Work With Me"</div><div class="ts">Your mom reading (72-hour delivery, bundled with a call) and the paid clarity call — with the credit-toward-coaching rule spelled out. Voxer me names; we'll pick together.</div></div></div>
+    <div class="task" data-t="p-payment"><div class="box"></div><div><div class="tt">Sort the payment flow</div><div class="ts">One clean PayPal link per offer, with the steps written where a tired mom can follow them without asking.</div></div></div>
+  </div>
+
+  <div class="week">
+    <h4>Week of Sep 24 <span class="wd">Doors open</span></h4>
+    <div class="wnote">Founding energy. Simple beats intricate, and version one beats waiting.</div>
+    <div class="task" data-t="p-publish"><div class="box"></div><div><div class="tt">Publish Ways to Work With Me + the reading classroom</div><div class="ts">With your explainer video and the payment links live.</div></div></div>
+    <div class="task" data-t="p-container"><div class="box"></div><div><div class="tt">Open the one-month container as a founding offer</div><div class="ts">Weekly calls + Voxer in between. Announce it in the group. You said it yourself: it doesn't have to be an intricate thing.</div></div></div>
+    <div class="task" data-t="p-show"><div class="box"></div><div><div class="tt">Show up where the moms are</div><div class="ts">One post or video this week — cosmic weather or "the Generator mom" — with a CTA to the village. Then respond to every mom who answers. That's the whole strategy.</div></div></div>
+    <div class="task" data-t="p-tenmoms"><div class="box"></div><div><div class="tt">Ten moms, one conversation at a time</div><div class="ts">Personal invites count. A mom you helped in a homeschool group counts double. Log each one in the Wins Ledger.</div></div></div>
+  </div>
+
+  <h3 class="sec">Off your plate</h3>
   <div class="panel goldline">
-    <span class="pill">AFTER OUR CALL</span>
-    <p class="b">This tab fills in with simple weekly tasks, each one small enough for a clear gut answer, plus a running list of everything Aurailia is taking off your plate. You will tap tasks to mark them done and watch the month move.</p>
-    <p class="b" style="margin-bottom:0">Until then, nothing to do here. The Check In, Idea Log and Tapping tabs are open whenever you want them.</p>
+    <p class="b" style="margin-bottom:10px"><b>Here's what I'm carrying, so you don't have to think about it:</b></p>
+    <ul class="mine">
+      <li>Your Soulmate Client Mirror Sheet — done and on its way to your inbox</li>
+      <li>The ROOT Start Here artifact — I'm building it now, fed by your Mirror Sheet: left-hand navigation, a welcome page, a get-your-chart step, the five types in your mom's own language, and each day's tool inside</li>
+      <li>Keeping this portal current as things ship, and Voxer, all month</li>
+    </ul>
   </div>
 </section>
 
-<!-- ================= CALL SPACE ================= -->
-<section class="view" id="v-call">
-  <div class="kicker">OUR CALLS</div>
-  <h2 class="title">The call <em>space.</em></h2>
-  <p class="lede">Summaries from each VIP call live here so nothing gets lost between sessions. Before we talk, there is one small piece of prep below, and it is a gentle one.</p>
+<!-- ================= ROOT BUILD ================= -->
+<section class="view" id="v-root">
+  <div class="kicker">THE DOORWAY</div>
+  <h2 class="title">Start Here: <em>the ROOT flow.</em></h2>
+  <p class="lede">This is your framework, and it's a good one: R, remember her why. O, own her knowing. O, own her needs. T, tune in. Day 1 grounds her before the framework begins, and Day 6 is the natural next step once the root is established. Here's the map in your words, and the build list to get it live.</p>
 
-  <h3 class="sec">September strategy call</h3>
   <div class="panel goldline">
-    <span class="pill">FOCUS</span>
-    <p class="b">Your Morning by Design kit and the September order of operations: the kit goes live in Skool as your Pillar 1 doorway, ten moms come through it, and the coaching offer opens at the end of the month to a warm room — as a founding offer, not a cold launch.</p>
-    <p class="b" style="margin-bottom:0">Whatever we find about the stall, and whatever plan we decide on, gets written up right here after the call. No conclusions before then.</p>
+    <span class="pill">THE ARTIFACT · WHAT I'M PROPOSING</span>
+    <p class="b">One interactive Start Here artifact holding all six days, so she works through ROOT in one beautiful place instead of six scattered docs. The frame:</p>
+    <ul class="mine">
+      <li><b>Left-hand navigation</b> with the six days, so she's never endlessly scrolling</li>
+      <li><b>A type picker that remembers her</b> — she selects her energy type once on Day 1, and every day after opens straight to her version</li>
+      <li><b>Your look and feel</b> — your colors, your fonts, your voice from the Mirror Sheet, moving and clickable rather than a wall of text</li>
+      <li><b>A video spot at the top of each day</b> for your five-to-ten-minute recording</li>
+      <li><b>Built phone-first</b>, because she's reading this one-handed with a child on her hip</li>
+      <li><b>A gentle footer on every day</b> pointing back to the village and forward to the next day</li>
+    </ul>
+    <p class="b" style="margin-bottom:0">Below, each day carries my proposed page contents. Run your gut down every line — uh-huh stays, uh-uh goes, and anything you'd add, Voxer me.</p>
   </div>
 
-  <h3 class="sec">One question before we talk</h3>
-  <p class="b">Do not think hard about this. First answer only.</p>
-  <div class="panel">
-    <p class="b" style="font-weight:600;color:var(--ink)">Picture the last day of September. The kit is live in the village, ten new moms are inside, and your coaching offer is open. When you read that sentence, what does your body do first — and where do you feel it?</p>
-    <textarea class="jr" id="jr-prep" placeholder="Write whatever comes. A sentence is plenty."></textarea>
-    <div class="savestate" id="ss-prep"></div>
+  <h3 class="sec">The six days</h3>
+  <details class="acc" open>
+    <summary><span class="ag">1</span>Welcome &amp; Find Your Chart<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Before she can root, she needs to know who she actually is. She finds her chart, gets a quick introduction to the five energy types, and realises for the first time that she was never the problem — she was just never given the right map.</p>
+          <div class="roundfocus"><b>PROPOSED FOR THIS PAGE</b>The doorway page. Her first thought should be "she's talking about me."</div>
+      <ul class="mine">
+        <li>Your welcome video, then the "you were never the problem, you were never given the right map" opening in your words</li>
+        <li>A get-your-chart step: the link, exactly what she needs (birth date, time, place), and what to do if she doesn't know her birth time</li>
+        <li>The five energy types as click-to-open cards, each written in her language with a "sounds like your house?" recogniser line — not textbook HD</li>
+        <li>The type picker that saves her choice for the rest of ROOT</li>
+        <li>One line on what the next five days will do, so she knows the shape of the journey</li>
+      </ul>
+</div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">2</span>R · Remember Her Why — SAVERS by Design<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>She remembers why she started all of this. The SAVERS by Design morning routine takes her from stressed and reactive to grounded before the first child calls her name. How she starts her day is how her day feels — and how she lives her days is how she lives her life.</p>
+          <div class="roundfocus"><b>PROPOSED FOR THIS PAGE</b>Your whole MBD kit, rebuilt as one interactive page instead of three Google Docs.</div>
+      <ul class="mine">
+        <li>The Emergency 5-Minute Morning front and centre — the survival-mode mom meets the doable version first, and the full six SAVERS is what it grows into</li>
+        <li>Her type's morning only (from the picker): Flow Not Force, Permission to Pivot, Rest to Rise, Lead the Energy, or Feel Before You Plan — with her six SAVERS prompts</li>
+        <li>Kid Time by Design as an expandable side tool: pick the child's type, get the 10–15 minute setup and your pro-tip script</li>
+        <li>An affirmation pull from your deck to close the practice</li>
+        <li>A simple weekly tracker she can tick in the artifact, plus the printable planner as download</li>
+      </ul>
+</div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">3</span>O · Own Her Knowing — HD Fundamentals<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>One job: experiment with her strategy and authority. The people-pleasing mom who has been outsourcing every answer — to her mother, her husband, the Facebook group — starts trusting the signal that was always there inside her.</p>
+          <div class="roundfocus"><b>PROPOSED FOR THIS PAGE</b>Strategy and authority only — the page itself models "you don't need all the HD goodies yet."</div>
+      <ul class="mine">
+        <li>Her strategy in plain mom-language: what responding (or waiting for the invitation, informing, the lunar cycle) actually looks like at 7am with kids</li>
+        <li>A "try this today" experiment per type — one small, real decision to run through her authority before bedtime</li>
+        <li>The Body Compass journal (your somatic journal, folded in): log the question, the body signal, what she did, what happened</li>
+        <li>A breath reset she can do in the kitchen: box breathing 4-4-4 or 4-7-8, guided on the page</li>
+        <li>A short EFT tapping reset per type for the not-self moment — frustration for her Generators and MGs, bitterness for Projectors, anger for Manifestors, disappointment for Reflectors — I'll write these from the Mirror Sheet</li>
+      </ul>
+</div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">4</span>O · Own Her Needs — Planetary Self-Care<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Fifteen minutes a day, no decisions to make: she finds the day, she does that specific practice. The mom who has been last on her own list starts remembering her needs matter too, and begins to actually enjoy her life alongside her family instead of just surviving it.</p>
+          <div class="roundfocus"><b>PROPOSED FOR THIS PAGE</b>Zero decision fatigue — the page knows what day it is.</div>
+      <ul class="mine">
+        <li>The week as seven cards — day, its planet, its self-care flavour — with today auto-highlighted when she opens the page</li>
+        <li>One 15-minute practice per day, written as do-this-now steps, not theory</li>
+        <li>A journal-jar prompt pull for the days she wants to go one layer deeper</li>
+        <li>A tiny "done today" tick so she watches a week of showing up for herself stack up</li>
+        <li>Your weekly self-care planner as the printable companion</li>
+      </ul>
+</div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">5</span>T · Tune In — HD Transits<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Every week she gets a cosmic weather report: what energies are moving through, what she can expect, and what's not hers to carry. The mom who has been collecting evidence that she's a bad mom starts realising she was never the problem — the energy was just heavy.</p>
+          <div class="roundfocus"><b>PROPOSED FOR THIS PAGE</b>The bridge from ROOT into your weekly rhythm — this page is why she stays.</div>
+      <ul class="mine">
+        <li>"What's a transit?" in three lines, no jargon — the weather metaphor does the work</li>
+        <li>This week's gate as one card: the energy, how it shows up in a mom's house, the shadow that isn't hers to carry, and the gift to lean into</li>
+        <li>A spot for your weekly cosmic weather video — the same recording that becomes your YouTube</li>
+        <li>The "not yours to carry" permission line, big — this is the page that dissolves the bad-mom evidence file</li>
+        <li>A pointer to the weekly Cosmic Weather post in the village, so the habit lives in community, not alone</li>
+      </ul>
+</div>
+  </details>
+  <details class="acc">
+    <summary><span class="ag">6</span>What's Next — The Root Takes Hold<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>She's not the same mom who showed up on Day 1. Now she chooses how deep she wants to go: a reading to see her full design up close, or the monthly coaching container to keep going with support. The root is established. Everything that grows from here is hers.</p>
+          <div class="roundfocus"><b>PROPOSED FOR THIS PAGE</b>Her before-and-after, then two clear doors. No pressure, all invitation.</div>
+      <ul class="mine">
+        <li>A short mirror moment: "the mom who showed up on Day 1" against who she is now — her own ROOT, named back to her</li>
+        <li>A keep-your-root-going one-pager: the daily rhythm on a single card (morning, decisions, 15 minutes, tune in)</li>
+        <li>Door one: the reading — what it is, delivered in 72 hours, comes with a call — with the payment link right there</li>
+        <li>Door two: the one-month container — weekly calls plus Voxer — same words as Ways to Work With Me, payment link right there</li>
+        <li>The free next step for everyone: join the coffee hour, with the calendar link</li>
+      </ul>
+</div>
+  </details>
+
+  <h3 class="sec">The build</h3>
+  <div class="progress-shell">
+    <div class="progress-top"><span class="pt-l">Getting ROOT live</span><span class="pt-r" id="root-count">0 of 7 done</span></div>
+    <div class="pbar"><div class="fill"></div></div>
   </div>
+  <div class="week">
+    <div class="task" data-t="root-d1"><div class="box"></div><div><div class="tt">Record the Day 1 welcome video</div><div class="ts">What this is, who you are, how she pulls her chart. Five minutes. Press record before it feels ready — that's the 3 line doing its job.</div></div></div>
+    <div class="task" data-t="root-d2"><div class="box"></div><div><div class="tt">Record Day 2 · SAVERS by Design</div><div class="ts">The presentation exists. This is press-record, not create-from-scratch.</div></div></div>
+    <div class="task" data-t="root-d3"><div class="box"></div><div><div class="tt">Record Day 3 · strategy &amp; authority</div><div class="ts">One job only. Resist teaching her all the HD goodies — that's what keeps this from overwhelming her.</div></div></div>
+    <div class="task" data-t="root-d4"><div class="box"></div><div><div class="tt">Record Day 4 · planetary self-care</div><div class="ts">Fifteen minutes, no decision fatigue: find the day, do the practice.</div></div></div>
+    <div class="task" data-t="root-d5"><div class="box"></div><div><div class="tt">Record Day 5 · the cosmic weather</div><div class="ts">This one can double as your first weekly YouTube video — artifact on screen, camera optional.</div></div></div>
+    <div class="task" data-t="root-d6"><div class="box"></div><div><div class="tt">Write the Day 6 What's Next page</div><div class="ts">Coffee hour, the reading, and the container — same words as your Ways to Work With Me page, so nothing contradicts.</div></div></div>
+    <div class="task" data-t="root-load"><div class="box"></div><div><div class="tt">Load the classroom + set the drip</div><div class="ts">Once my artifact lands: one page per day, an image and two lines of instruction on each, drip on, doorway open.</div></div></div>
+  </div>
+</section>
+
+<!-- ================= CALL RECAP ================= -->
+<section class="view" id="v-recap">
+  <div class="kicker">OUR SEPTEMBER CALL</div>
+  <h2 class="title">What we <em>covered.</em></h2>
+  <p class="lede">The short version of our kickoff call, so you don't have to remember it all. Open any section for the details.</p>
+
+  <details class="acc" open>
+    <summary><span class="ag">✦</span>Your pillars became one daily flow<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>This was the moment the whole thing clicked. Your four pillars aren't four topics — they're one day in her life. Morning by Design starts her morning, HD Fundamentals is her decision-making through the day, Planetary Self-Care is her fifteen minutes after homeschooling, and the Cosmic Weather closes her evening.</p>
+      <p>And the evening reflection quietly plants the seed for phase two of the membership — the shadow work, walking the wheel through the gates — without you having to build any of it yet.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>The Skool structure<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>One artifact per pillar, because the artifact is what you promote each week. They stay together in the Root Vault as quick tools rather than scattered across classrooms. Every page gets an image, two lines of instructions, and the link — nobody should land on a thing without knowing what it's for.</p>
+      <p>The doorway is a new Start Here classroom, dripped one day at a time, ending on a What's Next page that points to the coffee hour and your offers. The old "Build a Consistent Morning Routine" classroom gets hidden, and check why Morning by Design was showing "unlock for $1" — you never set that.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Your offers exist now<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You came into the call saying "I'd love to start, but I don't think I'm quite ready." You left with three offers that are all doable: a mom-specific reading delivered within 72 hours and bundled with a 1:1 call, a paid clarity call around $25–$47 that credits toward coaching, and the coaching itself as a simple one-month container — weekly calls plus Voxer in between.</p>
+      <p>The reading still needs its name. It's your version of my Business Alignment Blueprint, but through the lens of her self-care and her motherhood — not a generic foundational reading she can Google.</p>
+      <p>And remember why the paid call matters for your design: 70% of the world are Generators. Every offer you put out is something for them to respond to, and for the Projector moms, it's an invitation.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Ads, socials, and the content wheel<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>We had the honest conversation about ads-to-Skool. You don't have to live on the content wheel, and I'm not asking you to. But people who see an ad click the name behind it, and if the profile behind the ad has been silent for months, trust breaks before they ever reach the village. The agreement: a light, steady presence — once a week, even once a fortnight — that's it.</p>
+      <p>The good news is your best content is already in your workflow. The weekly Cosmic Weather video, made with the reskinned transits artifact on screen, doubles as your YouTube content — camera optional, words on screen, sacral lit because you love learning the gates anyway. Add short type-specific clips ("the Generator mom") later, each with a CTA to the village.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Payments from South Africa<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>Stripe isn't available where you are, so Skool can't take payment for you — everything runs on PayPal links you send. That's workable, it just needs to be frictionless: one clean payment link per offer, with the steps written where a tired mom can follow them without asking. This is on the plan before the doors open.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Artifacts, Claude, and GitHub<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You've been playing in Claude all weekend and it shows — that's your 3 line learning by doing, and I love it. Two things before you reskin more: watch the Rebranding + GitHub training inside Embody Wealth, and hold the transits reskin until your Mirror Sheet is in Claude's hands, so everything it writes sounds like your mom, not a generic one.</p>
+      <p>And publish your finished artifacts on GitHub rather than sharing Claude links — your moms may not have Claude, and the links can glitch. The training walks you through it step by step.</p>
+    </div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ag">✦</span>Since the call<span class="caret">›</span></summary>
+    <div class="acc-body">
+      <p>You sent your soulmate client — and she's vivid. Your Mirror Sheet is built and on its way to your inbox. You also sent the full Start Here layout, and it grew a spine since we talked: it's the ROOT framework now, and it's genuinely good. The whole map, plus the build plan, lives in the ROOT Build tab.</p>
+    </div>
+  </details>
 
   <h3 class="sec">Your notes, anytime</h3>
   <div class="panel">
@@ -635,8 +845,9 @@ details.acc.script > .acc-body{padding:4px 19px 18px}
 const VIEWS=[
   {id:"welcome",label:"Welcome",g:"✦"},
   {id:"reflect",label:"Your Reflection",g:"◈"},
+  {id:"recap",label:"Call Recap",g:"★"},
   {id:"plan",label:"September Plan",g:"◆"},
-  {id:"call",label:"Call Space",g:"★"},
+  {id:"root",label:"ROOT Build",g:"❋"},
   {id:"design",label:"Your Design",g:"✧"},
   {id:"checkin",label:"Check In",g:"◠"},
   {id:"ideas",label:"Idea Log",g:"✺"},
@@ -720,8 +931,6 @@ function wireJournal(taId,ssId,key){
     t=setTimeout(async()=>{
       await sSet(key,ta.value);
       ss.textContent=ta.value.trim()?"Saved":"";
-      const tick=document.getElementById("tick-call");
-      if(tick&&taId==="jr-prep") tick.classList.toggle("done",!!ta.value.trim());
     },600);
   });
 }
@@ -930,6 +1139,34 @@ document.getElementById("win-in").addEventListener("keydown",e=>{
   if(e.key==="Enter") document.getElementById("win-add").click();
 });
 
+/* ============ plan tasks ============ */
+let taskState={};
+function renderTasks(){
+  document.querySelectorAll(".task").forEach(t=>{
+    const on=!!taskState[t.dataset.t];
+    t.classList.toggle("done",on);
+    const box=t.querySelector(".box");
+    if(box) box.textContent=on?"✓":"";
+  });
+  [["v-plan","plan-count","tick-plan"],["v-root","root-count","tick-root"]].forEach(([sec,cid,tid])=>{
+    const el=document.getElementById(sec); if(!el) return;
+    const ts=el.querySelectorAll(".task");
+    let done=0; ts.forEach(t=>{ if(taskState[t.dataset.t]) done++; });
+    const fill=el.querySelector(".pbar .fill");
+    if(fill) fill.style.width=(ts.length?Math.round(done/ts.length*100):0)+"%";
+    const c=document.getElementById(cid); if(c) c.textContent=done+" of "+ts.length+" done";
+    const tick=document.getElementById(tid); if(tick) tick.classList.toggle("done",done>0);
+  });
+}
+document.querySelectorAll(".task").forEach(t=>{
+  t.addEventListener("click",async()=>{
+    if(taskState[t.dataset.t]) delete taskState[t.dataset.t];
+    else taskState[t.dataset.t]=true;
+    await sSet("yolandavip:tasks",taskState);
+    renderTasks();
+  });
+});
+
 /* ============ util & init ============ */
 function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 (async function init(){
@@ -938,11 +1175,10 @@ function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g
   winLog=(await sGet("yolandavip:wins"))||[];
   ideaLog=(await sGet("yolandavip:ideas"))||[];
   sudsState=(await sGet("yolandavip:suds"))||{};
-  const prep=await sGet("yolandavip:jr-prep"); if(prep){document.getElementById("jr-prep").value=prep; const t=document.getElementById("tick-call"); if(t&&prep.trim())t.classList.add("done");}
+  taskState=(await sGet("yolandavip:tasks"))||{};
   const notes=await sGet("yolandavip:jr-notes"); if(notes)document.getElementById("jr-notes").value=notes;
-  wireJournal("jr-prep","ss-prep","yolandavip:jr-prep");
   wireJournal("jr-notes","ss-notes","yolandavip:jr-notes");
-  renderSac(); renderWave(); renderWins(); renderIdeas(); initSuds();
+  renderSac(); renderWave(); renderWins(); renderIdeas(); initSuds(); renderTasks();
 })();
 </script>
 </body>
